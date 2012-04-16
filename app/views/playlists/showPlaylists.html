@@ -1,0 +1,33 @@
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Created</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    #{list items:playlists, as:'playlist'}
+    <tr>
+        <td>${playlist.id}</td>
+        <td><a href="${playlist.spotify}" target="_blank">${playlist.name}</a></td>
+        <td>${playlist.description}</td>
+        <td>${playlist.created.asdate('dd MMMM yyyy') }</td>
+        <td><a href="@{Playlists.addComment(playlist.id)}">add comment</a></td>
+        <td><a href="@{Playlists.showComments(playlist.id)}">see comments</a></td>
+        <td><a href="@{Playlists.editPlaylist(playlist.id)}">edit</a></td>
+        #{if playlist.active}
+            <td><a href="@{Playlists.deactivatePlaylist(playlist.id)}">hide</a></td>
+        #{/if}
+        #{else}
+            <td><a href="@{Playlists.activatePlaylist(playlist.id)}">show</a></td>
+            <td><a href="@{Playlists.deletePlaylist(playlist.id)}">delete</a></td>
+        #{/else}
+    </tr>
+    #{/list}
+</table>
+#{else}
+    <p>You have not uploaded any playlists</p>
+#{/else}
+<p><a href="@{Playlists.addPlaylist()}">add new playlist</a></p>

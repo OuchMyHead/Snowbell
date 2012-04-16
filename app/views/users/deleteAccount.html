@@ -1,0 +1,18 @@
+<h2>Delete Account</h2>
+
+<p>You have chosen to delete your account - once you have done this you will never be able to get it back</p>
+<p>All your playlists and picture albums will be deleted from this site and Claire and Colin will no longer be able to enjoy and share them</p>
+<p>If you wish to continue then enter your email and password below to confirm that you want us to close your profile</p>
+
+#{ifErrors}
+    <div class="error">#{error 'checkUser' /}</div>
+#{/ifErrors}
+#{form @Users.confirmDeleteUser() , id:'deleteUserForm', enctype:'multipart/form-data' }
+    <label for="email">email:</label>
+    <input type="text" name="email" id="email" value="${flash.email}" />
+<br/>
+    <label for="password">password:</label>
+    <input type="password" name="password" id="password" />
+
+    <input type="submit" name="Delete Account" value="Delete Account" />
+#{/form}

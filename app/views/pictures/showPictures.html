@@ -1,0 +1,34 @@
+<h2>${pictureAlbum.name} pictures</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Path</th>
+        <th>Description</th>
+        <th>Created</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    #{list items:pictures, as:'picture'}
+    <tr>
+        <td>${picture.id}</td>
+        <td><img src="@{Pictures.showPicture(picture.id)}" width="150px" /></td>
+        <td>${picture.description}</td>
+        <td>${picture.uploaded.asdate('dd MMMM yyyy') }</td>
+        <td><a href="@{Pictures.addComment(picture.id)}">add comment</a></td>
+        <td><a href="@{Pictures.showComments(picture.id)}">see comments</a></td>
+        <td><a href="@{Pictures.editPicture(pictureAlbum.id, picture.id)}">edit</a></td>
+        #{if picture.active}
+            <td><a href="@{Pictures.deactivatePicture(pictureAlbum.id, picture.id)}">hide</a></td>
+        #{/if}
+        #{else}
+            <td><a href="@{Pictures.activatePicture(pictureAlbum.id, picture.id)}">show</a></td>
+            <td><a href="@{Pictures.deletePicture(pictureAlbum.id, picture.id)}">delete</a></td>
+        #{/else}
+    </tr>
+    #{/list}
+</table>
+#{else}
+    <p>You have not added any pictures to this album</p>
+#{/else}
+<p><a href="@{Pictures.addPicture( pictureAlbum.id )}">add picture</a></p>

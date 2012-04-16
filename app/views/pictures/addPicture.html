@@ -1,0 +1,96 @@
+#{set 'moreStyles'}
+    <link href="/public/uploadify/uploadify.css" type="text/css" rel="stylesheet" />
+#{/set}
+
+
+
+#{set 'moreScripts'}
+        <script type="text/javascript" src="/public/uploadify/jquery.uploadify.js"></script>
+        <script type="text/javascript" src="/public/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+        <script>
+            $(function() {
+                $('#file_upload').uploadify({
+                    'uploader'      :   '@{Pictures.createPicture( pictureAlbum.id )}',
+                    'swf'           :   '/public/uploadify/uploadify.swf',
+                    'cancelImage'   :   '/public/images/cancel.png',
+                    'fileObjName'  :   'data',
+                    'auto'          :   true,
+                    'multi'         :   true,
+                    'method'        :   'post',
+                    'removeCompleted' : false,
+                    'progressData' : 'all',
+                    'fileTypeExts'       :   '*.jpg;*.gif;*.png',
+                    'fileTypeDesc'      :   'Image Files (.JPG, .GIF, .PNG)',
+                    'queueSizeLimit' :  100,
+                    'simUploadLimit' :  1,
+                    'fileSizeLimit' : 1*1024, // 1MB
+                    'postData'    :   {'upload': '&{uploadCode}'}
+                });
+            });
+        </script>
+#{/set}
+#{extends "main.html" /}
+
+<h2>Add picture</h2>
+#{form @Pictures.createPicture( pictureAlbum.id ), id:'addPictureForm', enctype:'multipart/form-data' }
+<input id="file_upload" name="data" type="file" />
+<noscript>
+    <input type="hidden" name="upload" value="&{uploadCode}" />
+    <input type="submit" name="add" value="add" />
+</noscript>
+#{/form}
+
+<!--
+<div id="demo">
+    #{form @Pictures.createPicture( pictureAlbum.id ), id:'addPictureForm', enctype:'multipart/form-data' }
+
+	<fieldset id="demo-fallback">
+		<legend>File Upload</legend>
+		<p>
+			This form is just an example fallback for the unobtrusive behaviour of FancyUpload.
+			If this part is not changed, something must be wrong with your code.
+		</p>
+		<label for="demo-photoupload">
+			Upload a Photo:
+			<input type="file" name="Filedata" />
+		</label>
+	</fieldset>
+
+	<div id="demo-status" class="hide">
+		<p>
+			<a href="#" id="demo-browse">Browse Files</a> |
+			<a href="#" id="demo-clear">Clear List</a> |
+			<a href="#" id="demo-upload">Start Upload</a>
+		</p>
+		<div>
+			<strong class="overall-title"></strong><br />
+			<img src="../../assets/progress-bar/bar.gif" class="progress overall-progress" />
+		</div>
+		<div>
+			<strong class="current-title"></strong><br />
+			<img src="../../assets/progress-bar/bar.gif" class="progress current-progress" />
+		</div>
+		<div class="current-text"></div>
+	</div>
+
+	<ul id="demo-list"></ul>
+
+#{/form}
+</div>
+
+
+#{form @Pictures.createPicture( pictureAlbum.id ), id:'updatePictureForm', enctype:'multipart/form-data' }
+    <input type="file" name="data" />
+    #{ifErrors}<span class="error">#{error 'picture.pictureAlbum' /}</span>#{/ifErrors}
+    <label for="path">path:</label>
+    <input type="text" name="path" id="path" value="${flash.path}" />
+    #{ifErrors}<span class="error">#{error 'picture.path' /}</span>#{/ifErrors}
+<br/>
+    <label for="description">description:</label>
+    <textarea cols="60" name="description" id="description">${flash.description}</textarea>
+    #{ifErrors}<span class="error">#{error 'picture.description' /}</span>#{/ifErrors}
+<br/>
+    <input type="submit" name="add" value="add" />
+#{/form}
+
+-->

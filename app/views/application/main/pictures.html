@@ -1,0 +1,22 @@
+#{set title:'Claire & Colin Bell - ${pictureAlbum.name}' /}
+#{include 'application/main/index.html' /}
+<h2>${pictureAlbum.name} - ${pictureAlbum.user.name}</h2>
+#{list items:pictures, as:'picture'}
+    <div>
+        <p>${picture.path}</p>
+        <p>${picture.description} <br/> ${picture.uploaded.asdate('dd MMMM yyyy') }</p>
+        <p>
+            <ul>
+            #{list items:picture.comments.asList(), as:'comment'}
+                <li>${comment.comment} - ${comment.user.name}</li>
+            #{/list}
+            </ul>
+            #{if user}
+                <a href="@{Pictures.addComment(picture.id)}">add comment</a>
+            #{/if}
+        </p>
+    </div>
+#{/list}
+#{else}
+    <p>Oops...this is a little embarrassing! Something has gone horribly horribly wrong (I'm sure this album had pictures in it a minute ago!)</p>
+#{/else}

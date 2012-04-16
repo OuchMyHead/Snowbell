@@ -1,0 +1,7 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> siena 2.0.5
+    - play -> gae 1.4
+    - play -> recaptcha 1.2

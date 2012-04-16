@@ -1,0 +1,7 @@
+#{form @Pictures.createComment( id ), id:'addCommentForm', enctype:'multipart/form-data' }
+    <label for="comment">comment:</label>
+    <textarea cols="60" name="comment" id="comment">${flash.comment}</textarea>
+    #{ifErrors}<span class="error">#{error 'comment.comment' /}</span>#{/ifErrors}
+<br/>
+    <input type="submit" name="add" value="add" />
+#{/form

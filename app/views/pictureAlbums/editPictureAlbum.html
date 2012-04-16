@@ -1,0 +1,13 @@
+<h2>Edit picture album</h2>
+
+#{form @PictureAlbums.updatePictureAlbum( pictureAlbum.id ), id:'editPictureAlbumForm', enctype:'multipart/form-data' }
+    <label for="name">title:</label>
+    <input type="text" name="name" id="name" value="${(flash.name)?flash.name:pictureAlbum.name}" />
+    #{ifErrors}<span class="error">#{error 'pictureAlbum.name' /}</span>#{/ifErrors}
+<br/>
+    <label for="coverImage">Cover image:</label>
+    <input type="text" name="coverImage" id="coverImage" value="${(flash.coverImage)?flash.coverImage:pictureAlbum.coverImage}" />
+    #{ifErrors}<span class="error">#{error 'pictureAlbum.coverImage' /}</span>#{/ifErrors}
+<br/>
+    <input type="submit" name="save" value="save" />
+#{/form}

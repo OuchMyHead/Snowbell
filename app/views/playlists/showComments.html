@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <th>Comment</th>
+        <th>User id</th>
+        <th>Added</th>
+    </tr>
+    #{list items:comments, as:'comment'}
+    <tr>
+        <td>${comment.comment}</td>
+        <td>${comment.user.id}</td>
+        <td>${comment.created.asdate('dd MMMM yyyy') }</td>
+        <td><a href="@{Playlists.deleteComment(id, comment.id)}">delete</a></td>
+    </tr>
+    #{/list}
+</table>
+#{else}
+    <p>There are no comments</p>
+#{/else}
+<p><a href="@{Playlists.addComment(id)}">add comment</a></p>

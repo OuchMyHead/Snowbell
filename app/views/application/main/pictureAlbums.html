@@ -1,0 +1,11 @@
+#{set title:'Claire & Colin Bell - Picture Albums' /}
+#{include 'application/main/index.html' /}
+#{list items:pictureAlbums, as:'pictureAlbum'}
+    <div>
+        <p><a href="@{Application.thePictures(pictureAlbum.id)}">${pictureAlbum.name}</a></p>
+        <p>${pictureAlbum.user.name} <br/> ${pictureAlbum.created.asdate('dd MMMM yyyy') }</p>
+    </div>
+#{/list}
+#{else}
+    <p>Oops...this is a little embarrassing! Something has gone horribly horribly wrong (I'm pretty sure we have pictures!)</p>
+#{/else}

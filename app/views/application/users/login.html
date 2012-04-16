@@ -1,0 +1,31 @@
+#{include 'template.html' /}
+#{set title:'Sign in | Claire & Colin Bell' /}
+<div class="modal-backdrop"></div>
+<div class="modal">
+    <div class="modal-header">
+        <a class="close" href="@{Application.index}">×</a>
+        <img src="/public/images/hearts.png" alt="hearts" />
+    </div>
+    #{form @Application.userLogin() , id:'userSignInForm', enctype:'multipart/form-data' }
+        <div class="modal-body">
+            #{ifErrors}
+                <p class="alert-message block-message error">#{error 'user' /}</p>
+            #{/ifErrors}
+            <p>
+                <label for="email">email</label>
+                <input type="text" name="email" id="email" value="${flash.email}" />
+            </p>
+            <p>
+                <label for="password">password</label>
+                <input type="password" name="password" id="password" />
+            </p>
+            <p class="request">
+                <a href="@{Application.forgotPassword}">forgotten your password?</a>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a class="btn danger" href="@{Application.index}">cancel</a>
+            <input class="btn primary" type="submit" name="signin" value="sign in" />
+        </div>
+    #{/form}
+</div>

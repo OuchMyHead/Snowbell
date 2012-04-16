@@ -1,0 +1,17 @@
+<h2>Add playlist</h2>
+
+#{form @Playlists.createPlaylist(), id:'createPlaylistForm', enctype:'multipart/form-data' }
+    <label for="name">title:</label>
+    <input type="text" name="name" id="name" value="${flash.name}" />
+    #{ifErrors}<span class="error">#{error 'playlist.name' /}</span>#{/ifErrors}
+<br/>
+    <label for="spotify">Spotify Playlist:</label>
+    <input type="text" name="spotify" id="spotify" value="${flash.spotify}" />
+    #{ifErrors}<span class="error">#{error 'playlist.spotify' /}</span>#{/ifErrors}
+<br/>
+    <label for="description">description:</label>
+    <textarea cols="60" name="description" id="description">${flash.description}</textarea>
+    #{ifErrors}<span class="error">#{error 'playlist.description' /}</span>#{/ifErrors}
+<br/>
+    <input type="submit" name="add" value="add" />
+#{/form}

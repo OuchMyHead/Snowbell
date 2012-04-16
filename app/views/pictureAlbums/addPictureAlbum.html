@@ -1,0 +1,13 @@
+<h2>Add picture album</h2>
+
+#{form @PictureAlbums.createPictureAlbum(), id:'createPictureAlbumForm', enctype:'multipart/form-data' }
+    <label for="name">title:</label>
+    <input type="text" name="name" id="name" value="${flash.name}" />
+    #{ifErrors}<span class="error">#{error 'pictureAlbum.name' /}</span>#{/ifErrors}
+<br/>
+    <label for="coverImage">Cover image:</label>
+    <input type="text" name="coverImage" id="coverImage" value="${flash.coverImage}" />
+    #{ifErrors}<span class="error">#{error 'pictureAlbum.coverImage' /}</span>#{/ifErrors}
+<br/>
+    <input type="submit" name="add" value="add" />
+#{/form}

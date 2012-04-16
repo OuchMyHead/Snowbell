@@ -1,0 +1,57 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+
+user.name       = your name
+user.email      = your email
+user.password   = a password
+
+playlist.name    = playlist title
+playlist.description = playlist description
+playlist.spotify = spotify link
+
+pictureAlbum.name    = album title
+pictureAlbum.coverImage = cover image
+
+picture.path    = picture
+picture.description = message
+
+guestBooMessage.message = picture description
+
+email           = email
+password        = current password
+pass_conf       = password
+email_conf      = email
+captcha_code    = security check
+
+#email
+    validation.email = invalid email address
+    validation.emailUsed = sorry, %2$s is already registered
+
+#permission
+    validation.permission.pictures = you do not have permission to add pictures to the album "%2$s"
+
+#required
+    validation.required = required
+    validation.required.captcha = please provide a response for the %s
+    validation.required.confirm = please confirm %s
+    validation.required.login = invalid email / password combination
+    validation.required.requestPassword = sorry, this email address is not registered
+
+#match
+    validation.match.passwords = incorrect password. Please try again
+    validation.match.details = %s's do not match. Please try again
+    validation.match.captcha = the text you entered didn't match the %s. Please try again
+    validation.match.spotify = this is not a valid (HTTP) %s
+
+#maxSize
+    validation.maxSize = sorry, %1$s cannot be longer than %2$s characters
+    validation.maxSize.name = sorry, name cannot be longer than %2$s characters
+    validation.maxSize.email = sorry, email addresses cannot be longer than %2$s characters
+
+#url
+    validation.url = %s is not a valid url
+
+
+
+

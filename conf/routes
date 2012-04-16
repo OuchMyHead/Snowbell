@@ -1,0 +1,114 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                               Application.holding
+GET     /index                                          Application.index
+
+#Application
+GET     /register                                       Application.addUser
+POST    /register                                       Application.createUser
+GET     /register/success                               Application.confirmRegistrationSent
+GET     /captcha/{id}                                   Application.captcha
+GET     /login                                          Application.userSignIn
+POST    /login                                          Application.userLogIn
+GET     /duh                                            Application.forgotPassword
+POST    /duh                                            Application.requestPassword
+GET     /duh/confirmed                                  Application.confirmPasswordSent
+GET     /fixMyDuh/success                               Application.confirmPasswordUpdated
+GET     /fixMyDuh/{resetCode}                           Application.createNewPassword
+POST    /fixMyDuh/{resetCode}                           Application.submitNewPassword
+GET     /our-story                                      Application.ourStory
+GET     /the-albums                                     Application.theAlbum
+GET     /the-albums/the-tracks                          Application.thePlaylists
+GET     /the-albums/the-pictures                        Application.thePictureAlbums
+GET     /the-albums/the-pictures/{id}                   Application.thePictures
+GET     /wedding                                        Application.theWedding
+GET     /guestbook                                      Application.guestBook
+GET     /activation/activate/{activationCode}           Application.activateAccount
+GET     /activation/cancel/{activationCode}             Application.cancelAccount
+GET     /feedback                                       Application.contactUs
+POST    /feedback                                       Application.feedback
+
+#Users
+GET     /welcome                                        Users.account
+GET     /account/settings                               Users.accountSettings
+GET     /account/settings/name                          Users.editName
+POST    /account/settings/name                          Users.updateName
+GET     /account/settings/email                         Users.editEmail
+POST    /account/settings/email                         Users.updateEmail
+GET     /account/settings/password                      Users.editPassword
+POST    /account/settings/password                      Users.updatePassword
+GET     /account/activate                               Users.reactivateUser
+POST    /account/activate                               Users.confirmReactivateUser
+GET     /account/deactivate                             Users.deactivateUser
+POST    /account/deactivate                             Users.confirmDeactivateUser
+GET     /account/close                                  Users.deleteUser
+POST    /account/closed                                 Users.confirmDeleteUser
+GET     /bye-bye                                        Users.userLogout
+
+#Playlists
+GET     /playlists                                      Playlists.showPlaylists
+GET     /playlists/add                                  Playlists.addPlaylist
+POST    /playlists/add                                  Playlists.createPlaylist
+GET     /playlists/activate/{id}                        Playlists.activatePlaylist
+GET     /playlists/deactivate/{id}                      Playlists.deactivatePlaylist
+GET     /playlists/delete/{id}                          Playlists.deletePlaylist
+GET     /playlists/update/{id}                          Playlists.editPlaylist
+POST    /playlists/update/{id}                          Playlists.updatePlaylist
+GET     /playlists/comments/{id}                        Playlists.showComments
+GET     /playlists/comments/add/{id}                    Playlists.addComment
+POST    /playlists/comments/add/{id}                    Playlists.createComment
+GET     /playlists/comments/delete/{id}/{commentId}     Playlists.deleteComment
+
+#PictureAlbums
+GET     /albums                                         PictureAlbums.showPictureAlbums
+GET     /albums/add                                     PictureAlbums.addPictureAlbum
+POST    /albums/add                                     PictureAlbums.createPictureAlbum
+GET     /albums/activate/{id}                           PictureAlbums.activatePictureAlbum
+GET     /albums/deactivate/{id}                         PictureAlbums.deactivatePictureAlbum
+GET     /albums/delete/{id}                             PictureAlbums.deletePictureAlbum
+GET     /albums/update/{id}                             PictureAlbums.editPictureAlbum
+POST    /albums/update/{id}                             PictureAlbums.updatePictureAlbum
+
+GET     /post-image                                     Oauth.postImage
+GET     /authenticate                                   Oauth.authenticate
+
+#Pictures
+GET     /pictures/{id}                                  Pictures.showPictures
+GET     /pictures/add/{id}                              Pictures.addPicture
+POST    /pictures/add/{id}                              Pictures.createPicture
+GET     /pictures/show/{id}                             Pictures.showPicture
+GET     /pictures/activate/{id}/{pictureId}             Pictures.activatePicture
+GET     /pictures/deactivate/{id}/{pictureId}           Pictures.deactivatePicture
+GET     /pictures/delete/{id}/{pictureId}               Pictures.deletePicture
+GET     /pictures/update/{id}/{pictureId}               Pictures.editPicture
+POST    /pictures/update/{id}/{pictureId}               Pictures.updatePicture
+GET     /pictures/comments/{id}                         Pictures.showComments
+GET     /pictures/comments/add/{id}                     Pictures.addComment
+POST    /pictures/comments/add/{id}                     Pictures.createComment
+GET     /pictures/comments/delete/{id}/{commentId}      Pictures.deleteComment
+
+#GuestBook
+GET     /guestbook/message                              GuestBook.showGuestBookMessage
+GET     /guestbook/message/add                          GuestBook.addGuestBookMessage
+POST    /guestbook/message/add                          GuestBook.createGuestBookMessage
+GET     /guestbook/message/activate                     GuestBook.activateGuestBookMessage
+GET     /guestbook/message/deactivate                   GuestBook.deactivateGuestBookMessage
+GET     /guestbook/message/delete                       GuestBook.deleteGuestBookMessage
+GET     /guestbook/message/update                       GuestBook.editGuestBookMessage
+POST    /guestbook/message/update                       GuestBook.updateGuestBookMessage
+
+#Admin
+GET     /admin/listusers                                Admin.displayUsers
+GET     /admin/user/delete/{id}                         Admin.deleteUser
+
+# Ignore favicon requests
+GET     /favicon.ico                                    404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+# *       /{controller}/{action}                  {controller}.{action}

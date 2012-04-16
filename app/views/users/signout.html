@@ -1,0 +1,32 @@
+#{include 'template.html' /}
+#{set title:'Bye! | Claire & Colin Bell' /}
+<div class="modal-backdrop"></div>
+<div class="modal">
+    <div class="modal-header">
+        <a class="close" href="@{Application.index}">×</a>
+        <img src="/public/images/hearts.png" alt="hearts" />
+    </div>
+    <div class="modal-body">
+        #{if user }
+            <div class="alert-message block-message solo">
+                <p>Hmmm...you haven't been signed out...</p>
+                <p>
+                    <a href="@{Users.userLogout()}">Click here to try again</a>
+                </p>
+            </div>
+        #{/if}
+        #{else}
+            <div class="alert-message block-message solo">
+                <p>See you later gorgeous!</p>
+            </div>
+        #{/else}
+    </div>
+    <div class="modal-footer">
+        #{if user }
+            <a class="btn primary" href="@{Application.index}">cancel</a>
+        #{/if}
+        #{else}
+            <a class="btn primary" href="@{Application.index}">close</a>
+        #{/else}
+    </div>
+</div>

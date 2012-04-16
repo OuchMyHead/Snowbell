@@ -1,0 +1,12 @@
+<h2>Account Settings</h2>
+
+Name:       ${user?.name}   <a href="@{Users.editName()}">Edit</a>
+Email:      ${user?.email}  <a href="@{Users.editEmail()}">Edit</a>
+Password:   **************  <a href="@{Users.editPassword()}">Edit</a>
+#{if user.active}
+    <a href="@{Users.deactivateUser()}">Deactivate Account</a>
+#{/if}
+#{else}
+    <a href="@{Users.reactivateUser()}">Activate Account</a>
+    <a href="@{Users.deleteUser()}">Delete Account</a>
+#{/else}

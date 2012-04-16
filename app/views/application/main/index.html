@@ -1,0 +1,16 @@
+#{extends 'main.html' /}
+#{set title:'Claire & Colin Bell' /}
+<!-- this should be in template -->
+#{if user}
+    <a href="@{Users.account()}">Account</a>
+    <a href="@{Users.userLogout()}">Sign out</a>
+#{/if}
+#{else}
+    <a href="@{Application.addUser()}">Register</a>
+    <a href="@{Application.userSignIn()}">Sign in</a>
+#{/else}
+<a href="@{Application.forgotPassword()}">Forgotten Your Password?</a>
+<a href="@{Application.ourStory()}">Our Story</a>
+<a href="@{Application.theAlbum()}">The Albums</a>
+<a href="@{Application.theWedding()}">Our Wedding</a>
+<a href="@{Application.guestBook()}">Guest Book</a>

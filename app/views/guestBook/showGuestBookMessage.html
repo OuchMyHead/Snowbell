@@ -1,0 +1,31 @@
+#{if guestBookMessage.message != null }
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Author</th>
+            <th>Message</th>
+            <th>Created</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>${guestBookMessage.id}</td>
+            <td>${guestBookMessage.user.name}</td>
+            <td>${guestBookMessage.message}</td>
+            <td>${guestBookMessage.created.asdate('dd MMMM yyyy') }</td>
+            <td><a href="@{GuestBook.editGuestBookMessage()}">edit</a></td>
+            #{if guestBookMessage.active}
+                <td><a href="@{GuestBook.deactivateGuestBookMessage()}">hide</a></td>
+            #{/if}
+            #{else}
+                <td><a href="@{GuestBook.activateGuestBookMessage()}">show</a></td>
+                <td><a href="@{GuestBook.deleteGuestBookMessage()}">delete</a></td>
+            #{/else}
+        </tr>
+    </table>
+#{/if}
+#{else}
+    <p>You have not added a guest book message</p>
+    <p><a href="@{GuestBook.addGuestBookMessage()}">add guest book message now</a></p>
+#{/else}

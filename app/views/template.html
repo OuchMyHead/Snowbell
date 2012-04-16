@@ -1,0 +1,39 @@
+#{extends 'main.html' /}
+#{set title:'Claire & Colin Bell' /}
+#{include 'topNav.html' /}
+<div id="main" class="container">
+    <div id="story">
+        <a href="@{Application.ourStory()}">Claire and Colin - our story</a>
+    </div>
+    <div id="albums">
+        <a href="@{Application.theAlbum()}">The Album - the pictures and the tracks</a>
+    </div>
+    <div id="wedding">
+        <a href="@{Application.theWedding()}">The Wedding - please join us in the celebrations</a>
+    </div>
+    <div id="guestbook">
+        <a href="@{Application.guestBook()}">Guest Book - leave a message</a>
+    </div>
+    <div id="user">
+        <div class="content">
+            <h2>Albums</h2>
+        </div>
+        <ul class="menu">
+            <li class="active">
+                <a href="@{PictureAlbums.showPictureAlbums()}">albums</a>
+            </li>
+            <li>
+                <a href="@{Playlists.showPlaylists()}">playlists</a>
+            </li>
+            <li>
+                <a href="@{GuestBook.showGuestBookMessage()}">guestBook</a>
+            </li>
+            <li>
+                <a href="@{Users.accountSettings()}">account</a>
+            </li>
+            <li class="shut">
+                <a href="@{Application.index()}">&larr hide</a>
+            </li>
+        </ul>
+    </div>
+</div>

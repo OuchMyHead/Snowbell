@@ -1,0 +1,52 @@
+#{include 'template.html' /}
+#{set title:'Register | Claire & Colin Bell' /}
+<div class="modal-backdrop"></div>
+<div class="modal">
+    <div class="modal-header">
+        <a class="close" href="@{Application.index}">×</a>
+        <img src="/public/images/hearts.png" alt="hearts" />
+    </div>
+    #{form @Application.createUser() , id:'createUserForm', enctype:'multipart/form-data' }
+        <div class="modal-body">
+            <p class="instruction">enter all the details below</p>
+            #{ifErrors}
+                <p class="alert-message block-message error">
+                    Oops...there are some errors
+                </p>
+            #{/ifErrors}
+            <p>
+                <label for="name">name:</label>
+                <input type="text" name="name" id="name" value="${flash.name}" />
+                #{ifErrors}<span class="error">#{error 'user.name' /}</span>#{/ifErrors}
+            </p>
+            <p>
+                <label for="email">email:</label>
+                <input type="text" name="email" id="email" value="${flash.email}" />
+                #{ifErrors}<span class="error">#{error 'user.email' /}</span>#{/ifErrors}
+            </p>
+            <p>
+                <label for="email_conf">confirm email:</label>
+                <input type="text" name="email_conf" id="email_conf" value="${flash.email_conf}" />
+                #{ifErrors}<span class="error">#{error 'email_conf' /}</span>#{/ifErrors}
+            </p>
+            <p>
+                <label for="password">password:</label>
+                <input type="password" name="password" id="password" />
+                #{ifErrors}<span class="error">#{error 'user.password' /}</span>#{/ifErrors}
+            </p>
+            <p>
+                <label for="pass_conf">confirm password:</label>
+                <input type="password" name="pass_conf" id="pass_conf" />
+                #{ifErrors}<span class="error">#{error 'pass_conf' /}</span>#{/ifErrors}
+            </p>
+            <p>
+                #{ifErrors}<span class="error captcha">#{error 'captcha' /}</span>#{/ifErrors}
+                #{ugot.recaptcha /}
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a class="btn danger" href="@{Application.index}">cancel</a>
+            <input  class="btn success" type="submit" name="register" value="register" />
+        </div>
+    #{/form}
+</div>

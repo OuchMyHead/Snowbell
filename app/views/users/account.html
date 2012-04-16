@@ -1,0 +1,30 @@
+#{include 'template.html' /}
+#{set title:'Hiiiiya! | Claire & Colin Bell' /}
+<div class="modal-backdrop"></div>
+<div class="modal">
+    <div class="modal-header">
+        <a class="close" href="@{Application.index}">×</a>
+        <img src="/public/images/hearts.png" alt="hearts" />
+    </div>
+    <div class="modal-body">
+        #{if user }
+            <div class="alert-message block-message solo">
+                <p>Welcome back <b>${user.name}</b> - you look beautiful today!!</p>
+            </div>
+        #{/if}
+        #{else}
+            <p>Hmmm...something went wrong...</p>
+            <p>
+                <a href="@{Application.userSignIn()}">Click here to try again</a>
+            </p>
+        #{/else}
+    </div>
+    <div class="modal-footer">
+        #{if user }
+            <a class="btn primary" href="@{Application.index}">close</a>
+        #{/if}
+        #{else}
+            <a class="btn primary" href="@{Application.index}">cancel</a>
+        #{/else}
+    </div>
+</div>

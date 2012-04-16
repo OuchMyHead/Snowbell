@@ -1,0 +1,11 @@
+#{form @Users.updateEmail() , id:'updateEmailForm', enctype:'multipart/form-data' }
+    <label for="email">email:</label>
+    <input type="text" name="email" id="email" value="${(flash.email)?flash.email:user.email}" />
+    #{ifErrors}<span class="error">#{error 'user.email' /}</span>#{/ifErrors}
+<br/>
+    <label for="password">To save changes, please enter your password:</label>
+    <input type="password" name="password" id="password" />
+    #{ifErrors}<span class="error">#{error 'password' /}</span>#{/ifErrors}
+
+    <input type="submit" name="Save Changes" value="Save Changes" />
+#{/form}

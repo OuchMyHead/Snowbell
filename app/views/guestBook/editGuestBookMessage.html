@@ -1,0 +1,9 @@
+<h2>Edit Guest Book Message</h2>
+
+#{form @GuestBook.createGuestBookMessage(), id:'editGuestBookMessageForm', enctype:'multipart/form-data' }
+    <label for="message">message:</label>
+    <textarea cols="60" name="message" id="message">${(flash.message)?flash.message:guestBookMessage.message}</textarea>
+    #{ifErrors}<span class="error">#{error 'GuestBookMessage.message' /}</span>#{/ifErrors}
+<br/>
+    <input type="submit" name="save" value="save" />
+#{/form}

@@ -1,0 +1,17 @@
+<h2>Deactivate Account</h2>
+
+<p>You have chosen to deactivate your account - this means you will not be able to add comments, playlists or albums and other users cannot view your profile.</p>
+<p>Your playlists and picture albums will still be available on the site for Claire and Colin to share and enjoy.</p>
+<p>If you wish to continue then enter your password below to confirm that you want us to deactivate your profile.</p>
+<p>You can reactivate your profile at any time.</p>
+
+#{ifErrors}
+    <div class="error">#{error 'user' /}</div>
+#{/ifErrors}
+#{form @Users.confirmDeactivateUser() , id:'deactivateUserForm', enctype:'multipart/form-data' }
+    <label for="password">To deactivate your account, please enter your password:</label>
+    <input type="password" name="password" id="password" />
+    #{ifErrors}<span class="error">#{error 'password' /}</span>#{/ifErrors}
+
+    <input type="submit" name="Deactivate Account" value="Deactivate Account" />
+#{/form}

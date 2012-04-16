@@ -1,0 +1,21 @@
+#{set title:'Claire & Colin Bell - Spotify Playlists' /}
+#{include 'application/main/index.html' /}
+#{list items:playlists, as:'playlist'}
+    <div>
+        <p><a href="${playlist.spotify}" target="_blank">${playlist.name}</a> - ${playlist.description}</p>
+        <p>${playlist.user.name} <br/> ${playlist.created.asdate('dd MMMM yyyy') }</p>
+        <p>
+            <ul>
+            #{list items:playlist.comments.asList(), as:'comment'}
+                <li>${comment.comment} - ${comment.user.name}</li>
+            #{/list}
+            </ul>
+            #{if user}
+                <a href="@{Playlists.addComment(playlist.id)}">add comment</a>
+            #{/if}
+        </p>
+    </div>
+#{/list}
+#{else}
+    <p>Oops...this is a little embarrassing! Something has gone horribly horribly wrong (or no one likes music as much as we do!)</p>
+#{/else}

@@ -1,0 +1,11 @@
+#{form @Users.updateName() , id:'updateNameForm', enctype:'multipart/form-data' }
+    <label for="name">name:</label>
+    <input type="text" name="name" id="name" value="${(flash.name)?flash.name:user.name}" />
+    #{ifErrors}<span class="error">#{error 'user.name' /}</span>#{/ifErrors}
+<br/>
+    <label for="password">To save changes, please enter your password:</label>
+    <input type="password" name="password" id="password" />
+    #{ifErrors}<span class="error">#{error 'password' /}</span>#{/ifErrors}
+<br/>
+    <input type="submit" name="Save Changes" value="Save Changes" />
+#{/form}

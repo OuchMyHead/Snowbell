@@ -1,0 +1,24 @@
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Active</th>
+        <th>Registered</th>
+        <th>Confirmed</th>
+    </tr>
+    #{list items:users, as:'user'}
+    <tr>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.password}</td>
+        <td>${user.active.yesno('yes', 'no')}</td>
+        <td>${user.created.asdate('dd/MM/yy @ HH:mm:ss')}</td>
+        <td>${(user.firstActivated)?user.firstActivated.asdate('dd/MM/yy @ HH:mm:ss'):"Not yet confirmed"}</td>
+        <td><a href="@{Admin.deleteUser(user.id)}">delete</a></td>
+    </tr>
+    #{/list}
+</table>
+#{else}
+    <span class="error">There are currently no registered users</span>
+#{/else}

@@ -1,0 +1,406 @@
+/**********************   main  ***********************/
+html, body{
+    background-color: #FBDCE4;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+    position: relative;
+    text-align: left;
+}
+
+.rounded {
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+
+}
+
+.alert-message.block-message {
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.error.alert-message.block-message:first-letter, li:first-letter {
+    text-transform: capitalize;
+}
+
+.clear {
+    clear: both;
+    overflow: hidden;
+}
+
+h1, h2 {
+    color: #BE1E2D;
+    font-family: "OptimusPrinceps";
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+    text-transform: capitalize;
+}
+
+a:hover {
+    color: #BE1E2D;
+}
+
+.alert-message.block-message p a,
+.alert-message.block-message.danger p a,
+.alert-message.block-message.error p a,
+.alert-message.block-message.success p a,
+.alert-message.block-message.info p a {
+    color: #0069D6;
+}
+
+.error {
+    color: #BE1E2D;
+    font-size: 0.9em;
+}
+
+.request {
+    font-size: 0.9em;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.instruction {
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+li {
+    list-style: none outside none;
+}
+
+.solo {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/************* Template *********************/
+
+#main {
+    background: url("http://img651.imageshack.us/img651/6196/woodz.jpg") no-repeat scroll right top transparent;
+    height: 815px;
+    margin-top: 1%;
+    position: relative;
+    text-indent: -4000px;
+    width: 880px;
+}
+
+#story, #albums, #wedding, #guestbook {
+    background: url("http://img268.imageshack.us/img268/7715/allbooks.png") no-repeat scroll right top transparent;
+    position: absolute;
+}
+
+#story a, #albums a, #wedding a, #guestbook a {
+    bottom: 19px;
+    left: 8px;
+    position: absolute;
+    right: 20px;
+    top: 7px;
+}
+
+#story {
+    background-position: -57px 0;
+    height: 381px;
+    left: 134px;
+    top: 43px;
+    width: 316px;
+}
+
+#albums {
+    background-position: -424px -16px;
+    height: 401px;
+    right: 84px;
+    top: 59px;
+    width: 295px;
+}
+
+#wedding {
+    background-position: 0 -386px;
+    bottom: 19px;
+    height: 367px;
+    left: 77px;
+    width: 308px;
+}
+
+#guestbook {
+    background-position: -316px -441px;
+    bottom: 35px;
+    height: 296px;
+    right: 13px;
+    width: 474px;
+}
+
+/************* User *************/
+
+#user:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0;
+    left: 0;
+    background: url("http://img651.imageshack.us/img651/6196/woodz.jpg") no-repeat scroll 0 -83px transparent;
+    filter :alpha(opacity=0.6);
+    opacity : .6;
+    z-index:1;
+}
+
+#user {
+    bottom: 10%;
+    position: absolute;
+    text-indent: 0px;
+    top: 10%;
+    width: 100%;
+}
+
+#user .content{
+    margin: 10px;
+    position: relative;
+    z-index: 10;
+}
+
+#user .menu {
+    position: absolute;
+    right: -117px;
+    top: 0;
+}
+
+.menu * {
+    line-height: 35px;
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.menu li {
+    -moz-border-radius: 0 10px 10px 0;
+    -moz-box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.2);
+    background-color: #D7B37A;
+    background-image: -moz-linear-gradient(center top , #D6BA95, #D5B279);
+    margin-bottom: -5px;
+    padding: 7px 7px 7px 30px;
+    width: 80px;
+}
+
+.menu li.active {
+    background-color: #D7B37A;
+    background-image: -moz-linear-gradient(center top , #D6BA95, #D5B279);
+}
+
+.menu li:first-child {
+    border-top: none;
+}
+
+.menu li:hover, .menu li.active {
+    background-color: #0064CD;
+    background-image: -moz-linear-gradient(center top , #049CDB, #0064CD);
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+
+.menu li.shut:hover {
+    background-color: #C43C35;
+    background-image: -moz-linear-gradient(center top , #EE5F5B, #C43C35);
+}
+
+.menu li.active {
+    z-index: 1;
+}
+
+.menu li a:hover {
+    background-color: transparent;
+    background-image: none;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.menu a {
+    background-color: transparent;
+    background-image: none;
+    display: block;
+    width: 100%;
+}
+
+
+/************* Menu *************/
+.topbar-inner {
+    background: url("/public/images/dashes.png") repeat-x scroll left bottom #D6BA95;
+    filter: none;
+}
+
+.options {
+    list-style: none outside none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+    text-align: right;
+    width: 880px;
+}
+
+.options ul {
+    float: right;
+}
+
+.options * {
+    line-height: 35px;
+    margin: 0;
+}
+
+.options li {
+    display: inline;
+    padding-left: 10px;
+}
+
+.options a {
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.options p {
+    float: left;
+}
+
+.options img {
+    vertical-align: text-bottom;
+}
+
+.options li:hover > a, .options li a:hover {
+    color: #BE1E2D;
+    text-decoration: none;
+}
+
+.drop-down > a:after {
+    content: "";
+	border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #FFFFFF;
+    margin-left: 5px;
+    position: relative;
+    top: 0.9em;
+}
+
+.drop-down a:hover:after, .options li:hover > a:after {
+	border-top-color: #BE1E2D;
+}
+
+.drop-down:hover ul.dropdown-menu{
+	display: block;
+}
+
+ul.dropdown-menu li {
+    display: block;
+    margin-right: 12px;
+}
+
+ul.dropdown-menu li a:hover {
+    background-color: transparent;
+    background-image: none;
+}
+
+ul.dropdown-menu li a, ul.dropdown-menu li a:hover {
+    text-shadow: 0 0 0 transparent;
+    -webkit-box-shadow:  0 0 0 transparent;
+    -moz-box-shadow:  0 0 0 transparent;
+    box-shadow:  0 0 0 transparent;
+}
+
+.dropdown-menu {
+    background-color: #D7B37A;
+    background-repeat:repeat-x;
+    background-image:-khtml-gradient(linear, left top, left bottom, from(#D6BA95), to(#D7B37A));
+    background-image:-moz-linear-gradient(top, #D6BA95, #D7B37A);
+    background-image:-ms-linear-gradient(top, #D6BA95, #D7B37A);
+    background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #D6BA95), color-stop(100%, #D7B37A));
+    background-image:-webkit-linear-gradient(top, #D6BA95, #D7B37A);
+    background-image:-o-linear-gradient(top, #D6BA95, #D7B37A);
+    background-image:linear-gradient(top, #D6BA95, #D7B37A);
+    right: -13px;
+    top: 34px;
+}
+
+hr {
+    margin: 0;
+}
+
+/************* Holder page *********************/
+
+#holder {
+    text-align: center;
+}
+
+#filler  {
+    background: url("http://img543.imageshack.us/img543/2755/fullll.png") no-repeat scroll 50px -431px transparent;
+    height: 910px;
+    margin: auto;
+    text-indent: -4000px;
+    width: 1803px;
+}
+
+/************* Modal *********************/
+
+.modal  {
+    min-width: 560px;
+    width: auto;
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+    opacity: 0.2;
+}
+
+.modal-backdrop {
+    background-color: #FBDCE4;
+}
+
+.modal{
+    background-color:#D6BA95;
+    border-color:#D6BA95;
+    border-color: rgba(214, 186, 149, 0.3);
+    *border-color: #D6BA95;
+}
+
+.modal-header {
+    border-color: #D6BA95;
+}
+
+.modal-header, .modal-body {
+    background: url("/public/images/dashes.png") repeat-x scroll left bottom #D6BA95;
+}
+
+.modal-header, .modal-footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.modal-body {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.modal-footer{
+    background-color: #D6BA95;
+    border-top-color: #D6BA95;
+    -webkit-box-shadow:inset 0 1px 0 #D6BA95;
+    -moz-box-shadow:inset 0 1px 0 #D6BA95;
+    box-shadow:inset 0 1px 0 #D6BA95;
+}
+
+.modal form {
+    margin-bottom: 0;
+}
+
+/************* Captcha *********************/
+
+#recaptcha_widget_div, .captcha  {
+    margin-left: 140px;
+}

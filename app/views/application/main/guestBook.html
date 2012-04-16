@@ -1,0 +1,11 @@
+#{set title:'Claire & Colin Bell - Guestbook' /}
+#{include 'application/main/index.html' /}
+#{list items:guestBookMessages, as:'guestBookMessage'}
+    <div>
+        <p>${guestBookMessage.message}</p>
+        <p>${guestBookMessage.user.name} <br/> ${guestBookMessage.created.asdate('dd MMMM yyyy') }</p>
+    </div>
+#{/list}
+#{else}
+    <p>Oops...this is a little embarrassing! Something has gone horribly horribly wrong (or no one likes us)</p>
+#{/else}

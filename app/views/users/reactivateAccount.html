@@ -1,0 +1,15 @@
+<h2>Reactivate Account</h2>
+
+<p>You have chosen to reactivate your account - this means you will be able to add comments, playlists & albums and other users can view your profile.</p>
+<p>If you wish to continue then enter your password below to confirm that you want us to reactivate your profile.</p>
+
+#{ifErrors}
+    <div class="error">#{error 'user' /}</div>
+#{/ifErrors}
+#{form @Users.confirmReactivateUser() , id:'reactivateUserForm', enctype:'multipart/form-data' }
+    <label for="password">To reactivate your account, please enter your password:</label>
+    <input type="password" name="password" id="password" />
+    #{ifErrors}<span class="error">#{error 'password' /}</span>#{/ifErrors}
+
+    <input type="submit" name="Activate Account" value="Activate Account" />
+#{/form}

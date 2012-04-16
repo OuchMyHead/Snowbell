@@ -1,0 +1,34 @@
+<div class="topbar-inner">
+    <div class="options container">
+        <p>
+            <a href="@{Application.index}"><img src="/public/images/hearts.png" alt="home" /></a>
+        </p>
+        <ul>
+            #{if user}
+                <li><a href="@{Users.accountSettings()}">${user.name}</a></li>
+                <li class="drop-down">
+                    <a href="#/">options</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="@{PictureAlbums.showPictureAlbums()}">albums</a>
+                        </li>
+                        <li>
+                            <a href="@{Playlists.showPlaylists()}">playlists</a>
+                        </li>
+                        <li>
+                            <a href="@{GuestBook.showGuestBookMessage()}">guestBook</a>
+                        </li>
+                        <li>
+                            <hr/>
+                            <a href="@{Users.userLogout()}">sign out</a>
+                        </li>
+                    </ul>
+                </li>
+            #{/if}
+            #{else}
+                <li><a href="@{Application.userSignIn()}">Sign in</a></li>
+                <li><a href="@{Application.addUser()}">Register</a></li>
+            #{/else}
+        </ul>
+    </div>
+</div>
