@@ -1,0 +1,49 @@
+#{set welcome=(page=="welcome")?"active":"" /}
+#{set story=(page=="story")?"active":"" /}
+#{set wedding=(page=="wedding")?"active":"" /}
+#{set albums=(page=="albums")?"active":"" /}
+#{set guestbook=(page=="guestbook")?"active":"" /}
+#{set share=(page=="share")?"active":"" /}
+<div id="nav">
+    <h1>
+        C<sub>&</sub>C
+    </h1>
+    <ul>
+        <li class="${welcome}">
+            <a href="@{Application.index}">
+                <span class="icoMoon">home-icon</span>
+                <span>home</span>
+            </a>
+        </li>
+        <li class="${story}">
+            <a href="@{Application.ourStory}">
+                <span class="icoMoon">heart-icon</span>
+                <span>our story</span>
+            </a>
+        </li>
+        <li class="${wedding}">
+            <a href="#wedding">
+                <span class="icoMoon">diamond-icon</span>
+                <span>our wedding</span>
+            </a>
+        </li>
+        <li class="${albums}">
+            <a href="#albums">
+                <span class="icoMoon">albums-icon</span>
+                <span>the albums</span>
+            </a>
+        </li>
+        <li class="${guestbook}">
+            <a href="@{Application.guestbook}">
+                <span class="icoMoon">speech-icon</span>
+                <span>guestbook</span>
+            </a>
+        </li>
+        <li class="${share}">
+            <a href="#share">
+                <span class="icoMoon">account-icon</span>
+                <span>account</span>
+            </a>
+        </li>
+    </ul>
+</div>

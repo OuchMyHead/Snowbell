@@ -20,6 +20,16 @@ public class Application extends Controller {
         renderArgs.put( "user", user );
     }
 
+    @Before
+    static void setMarker(){
+        //always default to index page
+        setMarker( "welcome" );
+    }
+
+    static void setMarker( String page ){
+        renderArgs.put( "page", page );
+    }
+
     /**
      * landing page
      */
@@ -31,7 +41,7 @@ public class Application extends Controller {
      * landing page
      */
     public static void index(){
-        renderTemplate("template.html");
+        renderTemplate("application/main/welcome.html");
     }
 
     /**
@@ -244,7 +254,8 @@ public class Application extends Controller {
     }
 
     public static void ourStory(){
-
+        setMarker( "story" );
+        renderTemplate( "application/main/ourStory.html" );
     }
 
     /**
@@ -301,6 +312,7 @@ public class Application extends Controller {
      * Display all active guest book messages
      */
     public static void guestBook(){
+        setMarker( "guestbook" );
         List<GuestBookMessage> guestBookMessages = GuestBookMessage.fetchAllActive();
         for( GuestBookMessage guestBookMessage : guestBookMessages )
             guestBookMessage.user.get();

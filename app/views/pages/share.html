@@ -1,0 +1,52 @@
+<div id="share" class="page">
+    <h1>Share</h1>
+        <div class="content">
+        <h2>Sign in</h2>
+        #{form @Application.userLogin() , id:'userSignInForm', enctype:'multipart/form-data' }
+            #{ifErrors}
+                <p class="alert-message block-message error">#{error 'user' /}</p>
+            #{/ifErrors}
+            <p>
+                <input type="email" name="email" value="${flash.email}" placeholder="email"  />
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="password" />
+            </p>
+            <p class="request">
+                <a href="@{Application.forgotPassword}">forgotten your password?</a>
+            </p>
+            <p>
+                <input class="btn btn-primary" type="submit" name="signin" value="sign in" />
+            </p>
+        #{/form}
+    </div>
+    <div class="content">
+        <h2>Sign up</h2>
+        #{form @Application.createUser() , id:'createUserForm', enctype:'multipart/form-data' }
+            #{ifErrors}
+                <p class="alert-message block-message error">
+                    Oops...there are some errors
+                </p>
+            #{/ifErrors}
+            <p>
+                <input type="text" name="name" id="name" value="${flash.name}" placeholder="name" />
+                #{ifErrors}<span class="error">#{error 'user.name' /}</span>#{/ifErrors}
+            </p>
+            <p>
+                <input type="email" name="email" value="${flash.email}" placeholder="email" />
+                #{ifErrors}<span class="error">#{error 'user.email' /}</span>#{/ifErrors}
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="password" />
+                #{ifErrors}<span class="error">#{error 'user.password' /}</span>#{/ifErrors}
+            </p>
+            <div class="captcha">
+                #{ifErrors}<span class="error captcha">#{error 'captcha' /}</span>#{/ifErrors}
+                #{ugot.recaptcha /}
+            </div>
+            <p>
+                <input class="btn btn-success" type="submit" name="register" value="register" />
+            </p>
+        #{/form}
+    </div>
+</div>
