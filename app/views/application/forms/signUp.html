@@ -1,0 +1,24 @@
+<h3>Sign up</h3>
+#{form @Registration.createUser() , id:'createUserForm', enctype:'multipart/form-data' }
+    <p>
+        #{ifErrors}<span class="text-error">#{error 'user.name' /}</span>#{/ifErrors}
+        <input type="text" name="name" id="name" value="${flash.name}" placeholder="name" />
+    </p>
+    <p>
+        #{ifErrors}<span class="text-error">#{error 'user.email' /}</span>#{/ifErrors}
+        <input type="email" name="reg_email" value="${flash.reg_email}" placeholder="email" />
+    </p>
+    <p>
+        #{ifErrors}<span class="text-error">#{error 'user.password' /}</span>#{/ifErrors}
+        <input type="password" name="password" placeholder="password" />
+    </p>
+    <p>
+        #{ifErrors}<span class="text-error">#{error 'captcha' /}</span>#{/ifErrors}
+    </p>
+    <div class="captcha loading sml">
+        #{ugot.recaptcha /}
+    </div>
+    <p>
+        <input class="btn btn-success" type="submit" name="register" value="Sign up" />
+    </p>
+#{/form}

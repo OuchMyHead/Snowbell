@@ -2,7 +2,7 @@ package controllers;
 
 import models.GuestBookMessage;
 import models.User;
-import play.Logger;
+import play.mvc.Before;
 import play.mvc.Controller;
 
 /**
@@ -14,21 +14,37 @@ import play.mvc.Controller;
  */
 public class GuestBook extends Controller {
 
+    @Before
+    static void setPageMarker(){
+        Application.setMarker( "share" );
+    }
+
+    @Before
+    static void setOption(){
+        Users.setOption( "message" );
+    }
+
+    @Before
+    static void checkAccess(){
+        Users.checkAccess();
+    }
+
     /**
      * Show user's guest book message
      */
     public static void showGuestBookMessage(){
         User user = Users.getUser();
         GuestBookMessage guestBookMessage = user.guestBookMessage.get();
-        Logger.info( ""+(guestBookMessage.message == null) );
-        renderTemplate("guestBook/showGuestBookMessage.html", guestBookMessage);
+        if( guestBookMessage == null || guestBookMessage.message == null )
+            addGuestBookMessage();
+        renderTemplate("application/account/message.html", guestBookMessage);
     }
 
     /**
      * Show template for adding guest book message
      */
     public static void addGuestBookMessage(){
-        renderTemplate( "guestBook/addGuestBookMessage.html" );
+        renderTemplate( "application/account/create/addMessage.html" );
     }
 
     /**

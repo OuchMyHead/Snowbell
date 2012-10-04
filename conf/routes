@@ -7,32 +7,37 @@ GET     /                                               Application.holding
 GET     /index                                          Application.index
 
 #Application
-GET     /register                                       Application.addUser
-POST    /register                                       Application.createUser
-GET     /register/success                               Application.confirmRegistrationSent
-GET     /captcha/{id}                                   Application.captcha
-GET     /login                                          Application.userSignIn
-POST    /login                                          Application.userLogIn
-GET     /duh                                            Application.forgotPassword
-POST    /duh                                            Application.requestPassword
-GET     /duh/confirmed                                  Application.confirmPasswordSent
-GET     /fixMyDuh/success                               Application.confirmPasswordUpdated
-GET     /fixMyDuh/{resetCode}                           Application.createNewPassword
-POST    /fixMyDuh/{resetCode}                           Application.submitNewPassword
 GET     /our-story                                      Application.ourStory
-GET     /the-albums                                     Application.theAlbum
-GET     /the-albums/the-tracks                          Application.thePlaylists
-GET     /the-albums/the-pictures                        Application.thePictureAlbums
-GET     /the-albums/the-pictures/{id}                   Application.thePictures
+GET     /albums                                         Application.theAlbum
+GET     /albums/spotify                                 Application.thePlaylists
+GET     /albums/pictures                                Application.thePictureAlbums
+GET     /albums/pictures/{id}                           Application.thePictures
 GET     /wedding                                        Application.theWedding
 GET     /guestbook                                      Application.guestBook
-GET     /activation/activate/{activationCode}           Application.activateAccount
-GET     /activation/cancel/{activationCode}             Application.cancelAccount
-GET     /feedback                                       Application.contactUs
-POST    /feedback                                       Application.feedback
+GET     /share                                          Application.share
+
+#Registration
+POST    /register                                       Registration.createUser
+GET     /register/success                               Registration.confirmRegistrationSent
+GET     /captcha/{id}                                   Registration.captcha
+GET     /register/activate/{activationCode}             Registration.activateAccount
+GET     /register/cancel/{activationCode}               Registration.cancelAccount
+
+#Feedback
+GET     /feedback                                       Feedback.contactUs
+POST    /feedback                                       Feedback.feedback
+
+#Locksmith
+GET     /account/identify                               Locksmith.forgotPassword
+POST    /account/identify                               Locksmith.requestPassword
+GET     /account/identify/success                       Locksmith.confirmPasswordSent
+GET     /account/reset/success                          Locksmith.confirmPasswordUpdated
+GET     /account/reset/{resetCode}                      Locksmith.createNewPassword
+POST    /account/reset/{resetCode}                      Locksmith.submitNewPassword
 
 #Users
-GET     /welcome                                        Users.account
+POST    /login                                          Users.userLogIn
+GET     /account                                        Users.account
 GET     /account/settings                               Users.accountSettings
 GET     /account/settings/name                          Users.editName
 POST    /account/settings/name                          Users.updateName
@@ -46,69 +51,66 @@ GET     /account/deactivate                             Users.deactivateUser
 POST    /account/deactivate                             Users.confirmDeactivateUser
 GET     /account/close                                  Users.deleteUser
 POST    /account/closed                                 Users.confirmDeleteUser
-GET     /bye-bye                                        Users.userLogout
+GET     /account/logout                                 Users.userLogout
 
 #Playlists
-GET     /playlists                                      Playlists.showPlaylists
-GET     /playlists/add                                  Playlists.addPlaylist
-POST    /playlists/add                                  Playlists.createPlaylist
-GET     /playlists/activate/{id}                        Playlists.activatePlaylist
-GET     /playlists/deactivate/{id}                      Playlists.deactivatePlaylist
-GET     /playlists/delete/{id}                          Playlists.deletePlaylist
-GET     /playlists/update/{id}                          Playlists.editPlaylist
-POST    /playlists/update/{id}                          Playlists.updatePlaylist
-GET     /playlists/comments/{id}                        Playlists.showComments
-GET     /playlists/comments/add/{id}                    Playlists.addComment
-POST    /playlists/comments/add/{id}                    Playlists.createComment
-GET     /playlists/comments/delete/{id}/{commentId}     Playlists.deleteComment
+GET     /account/playlists                                      Playlists.showPlaylists
+GET     /account/playlists/add                                  Playlists.addPlaylist
+POST    /account/playlists/add                                  Playlists.createPlaylist
+GET     /account/playlists/activate/{id}                        Playlists.activatePlaylist
+GET     /account/playlists/deactivate/{id}                      Playlists.deactivatePlaylist
+GET     /account/playlists/delete/{id}                          Playlists.deletePlaylist
+GET     /account/playlists/update/{id}                          Playlists.editPlaylist
+POST    /account/playlists/update/{id}                          Playlists.updatePlaylist
+GET     /account/playlists/comments/{id}                        Playlists.showComments
+GET     /account/playlists/comments/add/{id}                    Playlists.addComment
+POST    /account/playlists/comments/add/{id}                    Playlists.createComment
+GET     /account/playlists/comments/delete/{id}/{commentId}     Playlists.deleteComment
 
 #PictureAlbums
-GET     /albums                                         PictureAlbums.showPictureAlbums
-GET     /albums/add                                     PictureAlbums.addPictureAlbum
-POST    /albums/add                                     PictureAlbums.createPictureAlbum
-GET     /albums/activate/{id}                           PictureAlbums.activatePictureAlbum
-GET     /albums/deactivate/{id}                         PictureAlbums.deactivatePictureAlbum
-GET     /albums/delete/{id}                             PictureAlbums.deletePictureAlbum
-GET     /albums/update/{id}                             PictureAlbums.editPictureAlbum
-POST    /albums/update/{id}                             PictureAlbums.updatePictureAlbum
-
-GET     /post-image                                     Oauth.postImage
-GET     /authenticate                                   Oauth.authenticate
+GET     /account/albums                                         PictureAlbums.showPictureAlbums
+GET     /account/albums/add                                     PictureAlbums.addPictureAlbum
+POST    /account/albums/add                                     PictureAlbums.createPictureAlbum
+GET     /account/albums/activate/{id}                           PictureAlbums.activatePictureAlbum
+GET     /account/albums/deactivate/{id}                         PictureAlbums.deactivatePictureAlbum
+GET     /account/albums/delete/{id}                             PictureAlbums.deletePictureAlbum
+GET     /account/albums/update/{id}                             PictureAlbums.editPictureAlbum
+POST    /account/albums/update/{id}                             PictureAlbums.updatePictureAlbum
 
 #Pictures
-GET     /pictures/{id}                                  Pictures.showPictures
-GET     /pictures/add/{id}                              Pictures.addPicture
-POST    /pictures/add/{id}                              Pictures.createPicture
-GET     /pictures/show/{id}                             Pictures.showPicture
-GET     /pictures/activate/{id}/{pictureId}             Pictures.activatePicture
-GET     /pictures/deactivate/{id}/{pictureId}           Pictures.deactivatePicture
-GET     /pictures/delete/{id}/{pictureId}               Pictures.deletePicture
-GET     /pictures/update/{id}/{pictureId}               Pictures.editPicture
-POST    /pictures/update/{id}/{pictureId}               Pictures.updatePicture
-GET     /pictures/comments/{id}                         Pictures.showComments
-GET     /pictures/comments/add/{id}                     Pictures.addComment
-POST    /pictures/comments/add/{id}                     Pictures.createComment
-GET     /pictures/comments/delete/{id}/{commentId}      Pictures.deleteComment
+GET     /account/picture/{id}                                   Pictures.showPictures
+GET     /account/picture/add/{id}                               Pictures.addPicture
+POST    /account/picture/add/{id}                               Pictures.createPicture
+GET     /account/picture/show/{id}                              Pictures.showPicture
+GET     /account/picture/activate/{id}/{pictureId}              Pictures.activatePicture
+GET     /account/picture/deactivate/{id}/{pictureId}            Pictures.deactivatePicture
+GET     /account/picture/delete/{id}/{pictureId}                Pictures.deletePicture
+GET     /account/picture/update/{id}/{pictureId}                Pictures.editPicture
+POST    /account/picture/update/{id}/{pictureId}                Pictures.updatePicture
+GET     /account/picture/comments/{id}                          Pictures.showComments
+GET     /account/picture/comments/add/{id}                      Pictures.addComment
+POST    /account/picture/comments/add/{id}                      Pictures.createComment
+GET     /account/picture/comments/delete/{id}/{commentId}       Pictures.deleteComment
 
 #GuestBook
-GET     /guestbook/message                              GuestBook.showGuestBookMessage
-GET     /guestbook/message/add                          GuestBook.addGuestBookMessage
-POST    /guestbook/message/add                          GuestBook.createGuestBookMessage
-GET     /guestbook/message/activate                     GuestBook.activateGuestBookMessage
-GET     /guestbook/message/deactivate                   GuestBook.deactivateGuestBookMessage
-GET     /guestbook/message/delete                       GuestBook.deleteGuestBookMessage
-GET     /guestbook/message/update                       GuestBook.editGuestBookMessage
-POST    /guestbook/message/update                       GuestBook.updateGuestBookMessage
+GET     /account/message                              GuestBook.showGuestBookMessage
+GET     /account/message/add                          GuestBook.addGuestBookMessage
+POST    /account/message/add                          GuestBook.createGuestBookMessage
+GET     /account/message/activate                     GuestBook.activateGuestBookMessage
+GET     /account/message/deactivate                   GuestBook.deactivateGuestBookMessage
+GET     /account/message/delete                       GuestBook.deleteGuestBookMessage
+GET     /account/message/update                       GuestBook.editGuestBookMessage
+POST    /account/message/update                       GuestBook.updateGuestBookMessage
 
 #Admin
 GET     /admin/listusers                                Admin.displayUsers
 GET     /admin/user/delete/{id}                         Admin.deleteUser
 
-# Ignore favicon requests
+#Ignore favicon requests
 GET     /favicon.ico                                    404
 
-# Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+#Map static resources from the /app/public folder to the /public path
+GET     /public/                                        staticDir:public
 
 # Catch all
 # *       /{controller}/{action}                  {controller}.{action}

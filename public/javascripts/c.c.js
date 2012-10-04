@@ -8,6 +8,9 @@ $(window).bind("load", function() {
         transition: "none"
     });
 
+    $("#account textarea").css('overflow', 'hidden').autogrow()
+
+
     /*
     //smooth scroll
     $(function() {

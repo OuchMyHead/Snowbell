@@ -1,8 +1,8 @@
 package controllers;
 
 import models.*;
+import play.mvc.Before;
 import play.mvc.Controller;
-
 import java.util.List;
 
 /**
@@ -14,13 +14,28 @@ import java.util.List;
  */
 public class PictureAlbums extends Controller {
 
+    @Before
+    static void setPageMarker(){
+        Application.setMarker( "share" );
+    }
+
+    @Before
+    static void setOption(){
+        Users.setOption( "albums" );
+    }
+
+    @Before
+    static void checkAccess(){
+        Users.checkAccess();
+    }
+
     /**
      * Show all picture albums for this user
      */
     public static void showPictureAlbums(){
         User user = Users.getUser();
         List<PictureAlbum> pictureAlbums = user.pictureAlbums.asList();
-        renderTemplate( "pictureAlbums/showPictureAlbums.html", pictureAlbums );
+        renderTemplate( "application/account/albums.html", pictureAlbums );
     }
 
     /**

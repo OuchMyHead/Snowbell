@@ -1,0 +1,15 @@
+#{include '/application/main/share.html' /}
+#{if user }
+    #{modal title:"account request closed", link:play.mvc.Router.reverse("Application.share")}
+        <p class="text-info">The account request for ${user.email} has been closed</p>
+        <p class="text-info">You can request a new account at anytime by registering again</p>
+    #{/modal}
+#{/if}
+#{else}
+    #{modal title:"oops... this is embarrassing", link:play.mvc.Router.reverse("Application.share")}
+        <p class="text-error">Sorry, but this is not a valid cancellation code</p>
+        <p class="text-error">
+            Please feel free to #{a @feedback.contactUs() }contact us#{/a} if you are having problems!
+        </p>
+    #{/modal}
+#{/else}

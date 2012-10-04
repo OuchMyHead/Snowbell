@@ -1,15 +1,9 @@
 package controllers;
 
-import com.google.apphosting.runtime.security.WhiteList;
 import models.*;
-import play.Logger;
 import play.libs.Codec;
 import play.mvc.*;
 import tools.Grammer;
-
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,13 +17,54 @@ public class Users extends Controller {
     /**
      * Check user access
      */
-    @Before
+    @Before( unless = "userLogIn" )
     static void checkAccess(){
         //check user is logged in
         User user = getUser();
         //if we cannot find user, direct to login
-        if( user == null ){
-            Application.userSignIn();
+        if( user == null ) Application.share();
+        else renderArgs.put( "user", user );
+    }
+
+    @Before
+    static void setPageMarker(){
+        Application.setMarker( "share" );
+    }
+
+    @Before
+    static void setDefaultOption(){
+        setOption( "settings" );
+    }
+
+    @Before
+    static void setOption( String option ){
+        renderArgs.put( "option", option );
+    }
+
+    /**
+     * Log user in
+     * @param email - user email
+     * @param password - user password
+     */
+    public static void userLogIn( String email, String password ){
+        //process input data
+        User user = null;
+        password = Codec.hexSHA1(password);
+        email = email.trim();
+
+        //get user from database
+        user = User.connect( email, password );
+        validation.required(user).message( "validation.required.login" );
+
+        //put user in cache or show errors
+        if( validation.hasErrors() ){
+            params.flash();
+            validation.keep();
+            Application.share();
+        }
+        else{
+            session.put( User.USER_ID, user.id );
+            account();
         }
     }
 
@@ -39,12 +74,11 @@ public class Users extends Controller {
     public static void userLogout(){
         session.remove(User.USER_ID);
         //todo:: confirm logout at top of screen -> like twitter
-        renderTemplate( "users/signout.html" );
+        renderTemplate( "application/account/signOut.html" );
     }
 
     /**
      * Get user from session (this is used a lot so may as well put it in its own method)
-     *
      * @return User object
      */
     protected static User getUser(){
@@ -60,10 +94,7 @@ public class Users extends Controller {
      * Display users account page (their personal details and what they have uploaded)
      */
     public static void account() {
-        User user = getUser();
-        //check if last letter is s
-        boolean s = Grammer.shouldPluralize( user.name );
-        renderTemplate( "users/account.html", user, s );
+        PictureAlbums.showPictureAlbums();
     }
 
     /**
@@ -71,7 +102,7 @@ public class Users extends Controller {
      */
     public static void accountSettings(){
         User user = getUser();
-        renderTemplate( "users/accountSettings.html", user );
+        renderTemplate( "application/account/settings.html", user );
     }
 
     /**

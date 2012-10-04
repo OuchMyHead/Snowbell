@@ -4,6 +4,7 @@ import models.Comment;
 import models.Playlist;
 import models.User;
 import play.Logger;
+import play.mvc.Before;
 import play.mvc.Controller;
 
 import java.util.List;
@@ -17,13 +18,28 @@ import java.util.List;
  */
 public class Playlists extends Controller {
 
+    @Before
+    static void setPageMarker(){
+        Application.setMarker( "share" );
+    }
+
+    @Before
+    static void setOption(){
+        Users.setOption( "playlists" );
+    }
+
+    @Before
+    static void checkAccess(){
+        Users.checkAccess();
+    }
+
     /**
      * Show all playlist for logged in user
      */
     public static void showPlaylists(){
         User user = Users.getUser();
         List<Playlist> playlists = user.playlists.asList();
-        renderTemplate( "playlists/showPlaylists.html", playlists );
+        renderTemplate( "application/account/playlists.html", playlists );
     }
 
     /**

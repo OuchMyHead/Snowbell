@@ -28,9 +28,9 @@ public class GuestBookMessage extends Model  {
     private long created;
 
     @Column("message")
-    @Max(5000)
-    @Required
-    @MaxSize( value=5000, message="validation.maxSize")
+    @Max(2500)
+    @Required( message="validation.required.message")
+    @MaxSize( value=2500, message="validation.maxSize.message" )
     public String message;
 
     @Column("active")
@@ -49,7 +49,7 @@ public class GuestBookMessage extends Model  {
     }
 
     public static List<GuestBookMessage> fetchAllActive(){
-        return all().filter("active", true).fetch();
+        return all().filter("active", true).order("-created").fetch();
     }
 
     public static int count(){

@@ -6,10 +6,16 @@
         <span class="eye"></span>
         <span class="eye"></span>
     </h2>
+    <div class="block">
     #{list items:guestBookMessages, as:'guestBookMessage'}
-        <div class="block">
-            <p>${guestBookMessage.message}</p>
-            <p>${guestBookMessage.user.name} <br/> ${guestBookMessage.created.asdate('dd MMMM yyyy') }</p>
+        <div class="message clear">
+            <div class="user left">
+                <img src="/public/photos/no.photo.png" alt="profile picture" />
+            </div>
+            <div class="speech">
+                <p>${guestBookMessage.user.name} - ${new Date(guestBookMessage.created).since(true)}</p>
+                <p>${guestBookMessage.message.escape().raw()}</p>
+            </div>
         </div>
     #{/list}
     #{else}
@@ -18,4 +24,13 @@
             <p>Something has gone horribly horribly wrong (or no one likes us)</p>
         </div>
     #{/else}
+    </div>
+    <div class="block clear">
+        <div class="speech top add">
+            <p>Add a message&hellip;
+                <span class="icoMoon">write-icon</span>
+            </p>
+            <a href="#" class="add"></a>
+        </div>
+    </div>
 </div>

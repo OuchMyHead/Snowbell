@@ -1,0 +1,21 @@
+#{set photo=(option=="albums")?"active":"" /}
+#{set playlist=(option=="playlists")?"active":"" /}
+#{set message=(option=="message")?"active":"" /}
+#{set settings=(option=="settings")?"active":"" /}
+<ul id="account-nav">
+    <li class="${photo}">
+        <a href="@{PictureAlbums.showPictureAlbums()}">photo albums</a>
+    </li>
+    <li class="${playlist}">
+        <a href="@{Playlists.showPlaylists}">playlists</a>
+    </li>
+    <li class="${message}">
+        <a href="@{GuestBook.showGuestBookMessage()}">message</a>
+    </li>
+    <li class="${settings}">
+        <a href="@{Users.accountSettings()}">settings</a>
+    </li>
+    <li>
+        <a href="@{Users.userLogout()}">log out</a>
+    </li>
+</ul>

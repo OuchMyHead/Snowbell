@@ -1,12 +1,10 @@
 package models;
 
-import controllers.GuestBook;
-import play.Logger;
+import play.Play;
 import play.data.validation.*;
 import siena.*;
 import siena.Max;
 import java.util.Date;
-import java.util.List;
 import play.libs.Codec;
 import siena.core.*;
 
@@ -57,7 +55,8 @@ public class User extends Model {
     public long firstActivated;
 
     //todo - Link to facebook some-how or let user upload their own if they do not want to link their account (or don't have one)
-    public byte[] photo;
+    public byte[] photo = null;
+    public String photo_link = Play.configuration.getProperty( "default.user.photo", "/public/photos/no.photo.png" );
 
     @Owned(mappedBy="user")
 	public One<GuestBookMessage> guestBookMessage;

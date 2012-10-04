@@ -1,0 +1,15 @@
+#{extends '/application/account/account.html' /}
+#{set title: 'Share / message - ' + user.name /}
+<p>You have not added a guestbook message...why not add one now?</p>
+#{form @GuestBook.createGuestBookMessage() , id:'addMessageForm', enctype:'multipart/form-data' }
+    #{ifError 'guestBookMessage.message'}
+        <p class="text-error">#{error 'guestBookMessage.message' /}</p>
+    #{/ifError}
+    <p>
+        <textarea name="message">${flash.message}</textarea>
+    </p>
+    <p class="clear">
+        Need help? #{a @feedback.contactUs() }Contact us#{/a}
+        <input class="btn btn-success right" type="submit" name="add" value="Add" />
+    </p>
+#{/form}

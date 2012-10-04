@@ -6,7 +6,9 @@
 #{set share=(page=="share")?"active":"" /}
 <div id="nav">
     <h1>
-        C<sub>&</sub>C
+        <a href="@{Application.index}">
+            C<sub>&</sub>C
+        </a>
     </h1>
     <ul>
         <li class="${welcome}">
@@ -22,7 +24,7 @@
             </a>
         </li>
         <li class="${wedding}">
-            <a href="#wedding">
+            <a href="@{Application.theWedding}">
                 <span class="icoMoon">diamond-icon</span>
                 <span>our wedding</span>
             </a>
@@ -40,7 +42,8 @@
             </a>
         </li>
         <li class="${share}">
-            <a href="#share">
+            #{if user}<a href="@{Users.account}">#{/if}
+            #{else}<a href="@{Application.share}">#{/else}
                 <span class="icoMoon">account-icon</span>
                 <span>account</span>
             </a>

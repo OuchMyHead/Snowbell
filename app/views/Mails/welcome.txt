@@ -1,7 +1,7 @@
 Hi ${user.name}
 
 Please confirm your account with us by clicking this link:
-@@{application.activateAccount(activationCode)}
+@@{registration.activateAccount(activationCode)}
 
 Once you confirm, you will have full access to our website and all future notifications will be sent to this email address.
 
@@ -10,8 +10,9 @@ Claire and Colin
 
 *****
 If you received this message in error and did not sign up for an account with us, then you can ignore this email or open the following link in your browser to close the registration request:
-@@{application.cancelAccount(activationCode)}
+@@{registration.cancelAccount(activationCode)}
 
-Please do not reply to this message; it was sent from an unmonitored email address. For general inquiries or to request support with your account, please use the feedback page on our website:
-@@{application.contactUs}
+Please do not reply to this message; it was sent from an unmonitored email address.
+For general inquiries or to request support with your account, please use the feedback page on our website:
+@@{feedback.contactUs()}
 *****

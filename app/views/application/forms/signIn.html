@@ -1,0 +1,18 @@
+<h3>Sign in</h3>
+#{form @Users.userLogin() , id:'userSignInForm', enctype:'multipart/form-data' }
+    #{ifError 'user'}
+        #{set cnt = 0/}
+        #{errors}#{set cnt++/}#{/errors}
+        #{if cnt == 1}<p class="text-error">#{error 'user' /}</p>#{/if}
+    #{/ifError}
+    <p>
+        <input type="email" name="email" value="${flash.email}" placeholder="email"  />
+    </p>
+    <p>
+        <input type="password" name="password" placeholder="password" />
+    </p>
+    <p class="clear">
+        <input class="btn btn-primary right" type="submit" name="signin" value="Sign in" />
+        #{a @Locksmith.forgotPassword() }<sup>forgot password?</sup>#{/a}
+    </p>
+#{/form}

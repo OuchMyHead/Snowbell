@@ -1,0 +1,9 @@
+#{extends '/application/account/account.html' /}
+#{set title: 'Share / message - ' + user.name /}
+#{if guestBookMessage.message }
+<p>Your guest book message</p>
+<div>${guestBookMessage.message}</div>
+#{/if}
+#{else}
+    #{include '/application/account/create/addMessage.html' /}
+#{/else}

@@ -9,7 +9,7 @@
     #{form @Application.userLogin() , id:'userSignInForm', enctype:'multipart/form-data' }
         <div class="modal-body">
             #{ifErrors}
-                <p class="alert-message block-message error">#{error 'user' /}</p>
+                <p class="text-error">#{error 'user' /}</p>
             #{/ifErrors}
             <p>
                 <label for="email">email</label>

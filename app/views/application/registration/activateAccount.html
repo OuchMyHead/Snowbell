@@ -1,0 +1,15 @@
+#{include '/application/main/share.html' /}
+#{if user }
+    #{modal title:"account activated", link:play.mvc.Router.reverse("Application.share")}
+        <p class="text-info">Congratulations, ${user.name}, your account has been activated&hellip;</p>
+        <p class="text-info">You can now upload photos, Spotify playlists and leave a lovely message for us!</p>
+    #{/modal}
+#{/if}
+#{else}
+    #{modal title:"oops... this is embarrassing", link:play.mvc.Router.reverse("Application.share")}
+        <p class="text-error">Sorry, but this is not a valid activation code</p>
+        <p class="text-error">
+            You can try registering again or #{a @feedback.contactUs() }contact us#{/a} if you are having problems!
+        </p>
+    #{/modal}
+#{/else}

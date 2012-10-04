@@ -2,8 +2,8 @@
 # For example, for French create a messages.fr file
 #
 
-user.name       = your name
-user.email      = your email
+user.name       = name
+user.email      = email
 user.password   = a password
 
 playlist.name    = playlist title
@@ -14,9 +14,9 @@ pictureAlbum.name    = album title
 pictureAlbum.coverImage = cover image
 
 picture.path    = picture
-picture.description = message
+picture.description = description
 
-guestBooMessage.message = picture description
+guestBooMessage.message = message
 
 email           = email
 password        = current password
@@ -33,24 +33,29 @@ captcha_code    = security check
 
 #required
     validation.required = required
-    validation.required.captcha = please provide a response for the %s
+    validation.required.recaptcha = please provide a response for the %s
     validation.required.confirm = please confirm %s
     validation.required.login = invalid email / password combination
     validation.required.requestPassword = sorry, this email address is not registered
+    validation.required.message = Oops...you forgot to write a message
 
 #match
-    validation.match.passwords = incorrect password. Please try again
-    validation.match.details = %s's do not match. Please try again
-    validation.match.captcha = the text you entered didn't match the %s. Please try again
+    validation.match.passwords = incorrect password.
+    validation.match.details = %s's do not match.
+    validation.recaptcha = the text entered didn't match the %s.
     validation.match.spotify = this is not a valid (HTTP) %s
 
 #maxSize
     validation.maxSize = sorry, %1$s cannot be longer than %2$s characters
+    validation.maxSize.message = sorry, message cannot be longer than %2$s characters
     validation.maxSize.name = sorry, name cannot be longer than %2$s characters
     validation.maxSize.email = sorry, email addresses cannot be longer than %2$s characters
 
 #url
     validation.url = %s is not a valid url
+
+#welcome
+    user.welcome = hi, %s
 
 
 

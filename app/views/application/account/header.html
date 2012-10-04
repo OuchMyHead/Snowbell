@@ -1,0 +1,7 @@
+#{if user}
+    #{set imgSrc = (user.photo)?user.photo:user.photo_link /}
+    <h2 id="header">
+        <img class="profile" src="${imgSrc}" alt="${user.name} profile picture" />
+        &{'user.welcome', user.name}
+    </h2>
+#{/if}

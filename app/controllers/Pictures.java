@@ -20,6 +20,21 @@ import java.util.List;
  */
 public class Pictures extends Controller {
 
+    @Before
+    static void setPageMarker(){
+        Application.setMarker( "share" );
+    }
+
+    @Before
+    static void setOption(){
+        Users.setOption( "albums" );
+    }
+
+    @Before
+    static void checkAccess(){
+        Users.checkAccess();
+    }
+
     /**
      * Show all pictures for a picture album
      * @param id - Picture Album id
